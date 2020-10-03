@@ -2,3 +2,6 @@
 /SecuritySystem.Application/bin
 /SecuritySystem.Domain/bin
 /SecuritySystem.Domain/obj
+/SecuritySystem.Domain/Guards/Models/PendingFeatures
+/SecuritySystem.Domain/Systems/Exceptions/Pending Features
+/SecuritySystem.Domain/Systems/Models/Pending Features

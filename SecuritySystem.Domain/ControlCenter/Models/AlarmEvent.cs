@@ -3,6 +3,7 @@
     using Common;
     using Common.Models;
     using Exceptions;
+    using SecuritySystem.Domain.ControlCenter.Events;
     using System;
     using static ModelConstants.AlarmEvent;
 
@@ -41,13 +42,24 @@
 
         public AlarmEvent UpdateState(AlarmEventState state)
         {
+            ValidateEventNotHandled();
             this.State = state;
+            if (state == AlarmEventState.Handled)
+            {
+                this.RaiseEvent(new CloseAlarmEvent(this.Id));
+            }
             return this;
         }
 
         private void ValidateNotes(string notes)
         {
             Validator.StringLength<InvalidAlarmEventException>(notes, MinNotesLength, MaxNotesLength, nameof(this.Notes));
+        }
+
+        private void ValidateEventNotHandled()
+        {
+            if (this.State == AlarmEventState.Handled)
+                throw new InvalidAlarmEventException($"AlarmEvent with ID:{this.Id} is already handled.");
         }
     }
 }

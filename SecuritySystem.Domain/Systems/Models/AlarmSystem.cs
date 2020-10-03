@@ -4,6 +4,7 @@
     using Common.Models;
     using Exceptions;
     using Microsoft.VisualBasic.CompilerServices;
+    using SecuritySystem.Domain.Systems.Events;
     using static ModelConstants.AlarmSystem;
 
     public class AlarmSystem : Entity<int>, IAggregateRoot
@@ -148,7 +149,15 @@
         {
             this.Arm();
             this.AlarmTriggered = true;
-                //Generate event
+            this.RaiseEvent(new TriggeredAlarmSystemEvent(
+                this.Id, 
+                this.Notes,
+                this.ContactsInfo.Name,
+                this.ContactsInfo.PhoneNumber,
+                this.Address.City,
+                this.Address.Street,
+                this.Address.Coordinates.Latitude,
+                this.Address.Coordinates.Longitude));
 
             return this;
         }
@@ -157,7 +166,7 @@
             if (this.AlarmTriggered)
             {
                 this.AlarmTriggered = false;
-                //Generate event
+                this.RaiseEvent(new DisarmAlarmSystemEvent(this.Id));
             }
             return this;
         }

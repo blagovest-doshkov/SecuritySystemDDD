@@ -3,6 +3,7 @@
     using Common;
     using Common.Models;
     using Exceptions;
+    using SecuritySystem.Domain.Systems.Events;
     using System;
 
     public class GuardTask:Entity<int>, IAggregateRoot
@@ -38,12 +39,18 @@
             ValidateGuardPatrol(guard);
             this.AssignedPatrol = guard;
             this.AssignedPatrol.SetAvailabilityTo(false);
+            //Trigger Event
+            this.RaiseEvent(new AssignedPatrolGuardTaskEvent(this.EventId, guard.Id));
             return this;
         }
 
         public GuardTask UpdateState(GuardTaskState state)
         {
             this.State = state;
+            if (state == GuardTaskState.Handled)
+            {
+                // TO DO: free the guard
+            }
             return this;
         }
 

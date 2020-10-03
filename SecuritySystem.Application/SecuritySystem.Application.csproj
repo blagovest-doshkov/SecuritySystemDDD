@@ -17,4 +17,14 @@
     <ProjectReference Include="..\SecuritySystem.Domain\SecuritySystem.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ControlCenter\Handlers\" />
+    <Folder Include="ControlCenter\Commands\" />
+    <Folder Include="ControlCenter\Queries\" />
+    <Folder Include="Guards\Handlers\" />
+    <Folder Include="Guards\Commands\" />
+    <Folder Include="Systems\Queries\Common\" />
+    <Folder Include="Systems\Queries\Search\" />
+  </ItemGroup>
+
 </Project>
