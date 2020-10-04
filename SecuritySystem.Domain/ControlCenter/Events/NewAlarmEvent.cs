@@ -3,7 +3,7 @@
     using Common;
     using System;
 
-    class NewAlarmEvent : IDomainEvent
+    public class NewAlarmEvent : IDomainEvent
     {
         internal NewAlarmEvent(
             int eventId,

@@ -40,7 +40,7 @@
             this.AssignedPatrol = guard;
             this.AssignedPatrol.SetAvailabilityTo(false);
             //Trigger Event
-            this.RaiseEvent(new AssignedPatrolGuardTaskEvent(this.EventId, guard.Id));
+            this.RaiseEvent(new AssignedPatrolEvent(this.EventId, guard.Id));
             return this;
         }
 
@@ -49,7 +49,7 @@
             this.State = state;
             if (state == GuardTaskState.Handled)
             {
-                // TO DO: free the guard
+                this.AssignedPatrol.SetAvailabilityTo(true);
             }
             return this;
         }

@@ -1,9 +1,9 @@
 ﻿namespace SecuritySystem.Domain.Systems.Events
 {
     using Common;
-    public class AssignedPatrolGuardTaskEvent : IDomainEvent
+    public class AssignedPatrolEvent : IDomainEvent
     {
-        internal AssignedPatrolGuardTaskEvent(
+        internal AssignedPatrolEvent(
             int eventId,
             int guardPatrolId)
         {

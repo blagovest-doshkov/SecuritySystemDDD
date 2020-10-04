@@ -7,9 +7,11 @@
 
     public interface IGuardTaskDomainRepository : IDomainRepository<GuardTask>
     {
-        Task<GuardPatrol> Find(int id, CancellationToken cancellationToken = default);
+        Task<GuardTask> Find(int id, CancellationToken cancellationToken = default);
 
         Task<bool> Delete(int id, CancellationToken cancellationToken = default);
+
+        Task<GuardTask> FindActiveTaskByEventId(int eventId, CancellationToken cancellationToken = default);
 
     }
 }

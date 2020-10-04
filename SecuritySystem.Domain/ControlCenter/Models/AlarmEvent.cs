@@ -34,6 +34,19 @@
         public AlarmEventState State { get; private set; }
         public int? AssignedGuardId { get; private set; }
 
+        public AlarmEvent RequestGuardAssignment()
+        {
+            this.RaiseEvent(new NewAlarmEvent(
+                this.Id, 
+                EventDateTime,
+                Notes,
+                Address.City,
+                Address.StreetInfo,
+                Address.Coordinates.Latitude,
+                Address.Coordinates.Longitude));
+            return this;
+        }
+
         public AlarmEvent UpdateAssignedGuardId(int guardId)
         {
             this.AssignedGuardId = guardId;

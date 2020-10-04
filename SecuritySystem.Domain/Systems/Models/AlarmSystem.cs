@@ -147,17 +147,21 @@
         }
         public AlarmSystem TriggerAlarm()
         {
-            this.Arm();
-            this.AlarmTriggered = true;
-            this.RaiseEvent(new TriggeredAlarmSystemEvent(
-                this.Id, 
-                this.Notes,
-                this.ContactsInfo.Name,
-                this.ContactsInfo.PhoneNumber,
-                this.Address.City,
-                this.Address.Street,
-                this.Address.Coordinates.Latitude,
-                this.Address.Coordinates.Longitude));
+            ValidateAlarmNotTriggered();
+            if (!this.AlarmTriggered)
+            { 
+                this.Arm();
+                this.AlarmTriggered = true;
+                this.RaiseEvent(new TriggeredAlarmSystemEvent(
+                    this.Id, 
+                    this.Notes,
+                    this.ContactsInfo.Name,
+                    this.ContactsInfo.PhoneNumber,
+                    this.Address.City,
+                    this.Address.Street,
+                    this.Address.Coordinates.Latitude,
+                    this.Address.Coordinates.Longitude));
+            }
 
             return this;
         }
@@ -241,6 +245,14 @@
             if (this.IsInstalled)
             {
                 throw new InvalidAlarmSystemException($"System with ID:{this.Id} is not installed.");
+            }
+        }
+
+        private void ValidateAlarmNotTriggered()
+        {
+            if (this.AlarmTriggered)
+            {
+                throw new InvalidAlarmSystemException($"System with ID:{this.Id} is already triggered");
             }
         }
     }

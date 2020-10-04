@@ -1,5 +1,6 @@
 ﻿namespace SecuritySystem.Domain.ControlCenter.Repositories
 {
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
     using Common;
@@ -11,5 +12,6 @@
 
         Task<bool> Delete(int id, CancellationToken cancellationToken = default);
 
+        Task<AlarmEvent> FidActiveEventByAlarmSystemId(int AlarmSystemId, CancellationToken cancellationToken = default);
     }
 }

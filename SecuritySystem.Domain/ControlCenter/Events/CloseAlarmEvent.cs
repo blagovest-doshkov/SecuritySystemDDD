@@ -1,7 +1,7 @@
 ﻿namespace SecuritySystem.Domain.ControlCenter.Events
 {
     using Common;
-    class CloseAlarmEvent : IDomainEvent
+    public class CloseAlarmEvent : IDomainEvent
     {
         internal CloseAlarmEvent(
             int eventId)
