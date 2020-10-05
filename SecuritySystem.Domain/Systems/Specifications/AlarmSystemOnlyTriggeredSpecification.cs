@@ -7,16 +7,18 @@
 
     public class AlarmSystemOnlyTriggeredSpecification : Specification<AlarmSystem>
     {
-        private readonly bool isAlarmTriggered;
+        private readonly bool? isAlarmTriggered;
 
-        public AlarmSystemOnlyTriggeredSpecification(bool isAlarmTriggered)
+        public AlarmSystemOnlyTriggeredSpecification(bool? isAlarmTriggered)
         {
             this.isAlarmTriggered = isAlarmTriggered;
         }
 
+        protected override bool Include => this.isAlarmTriggered != null;
+
         public override Expression<Func<AlarmSystem, bool>> ToExpression()
         {
-            if (this.isAlarmTriggered)
+            if (this.isAlarmTriggered == true)
             {
                 return AlarmSystem => AlarmSystem.AlarmTriggered;
             }

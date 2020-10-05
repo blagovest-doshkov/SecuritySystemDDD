@@ -7,12 +7,13 @@
 
     public class AlarmSystemByArmStatusSpecification : Specification<AlarmSystem>
     {
-        private readonly bool isArmed;
+        private readonly bool? isArmed;
 
-        public AlarmSystemByArmStatusSpecification(bool isArmed)
+        public AlarmSystemByArmStatusSpecification(bool? isArmed)
         {
             this.isArmed = isArmed;
         }
+        protected override bool Include => this.isArmed != null;
 
         public override Expression<Func<AlarmSystem, bool>> ToExpression()
         {
