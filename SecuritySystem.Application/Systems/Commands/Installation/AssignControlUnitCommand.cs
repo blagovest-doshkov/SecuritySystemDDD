@@ -1,15 +1,16 @@
 ﻿namespace SecuritySystem.Application.Systems.Commands.Installation
 {
     using Application.Common;
-    using Application.Systems.Commands.Common;
     using Domain.Systems.Repositories;
     using MediatR;
     using System.Threading;
     using System.Threading.Tasks;
     
 
-    public class AssignControlUnitCommand : AlarmSystemCommand<AssignControlUnitCommand>, IRequest<Result>
+    public class AssignControlUnitCommand : EntityCommand<int>, IRequest<Result>
     {
+        public string ControlUnitSerialNumber { get; private set; } = default!;
+
         public class AssignControlUnitCommandHandler : IRequestHandler<AssignControlUnitCommand, Result>
         {
             private readonly IAlarmSystemDomainRepository alarmSystemDomainRepository;

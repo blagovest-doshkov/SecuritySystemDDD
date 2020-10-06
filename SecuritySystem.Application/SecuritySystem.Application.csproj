@@ -18,10 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ControlCenter\Commands\" />
+    <Folder Include="ControlCenter\Commands\Create\" />
+    <Folder Include="ControlCenter\Commands\Edit\" />
+    <Folder Include="ControlCenter\Commands\Delete\" />
     <Folder Include="ControlCenter\Queries\" />
     <Folder Include="Guards\GuardPatrols\" />
-    <Folder Include="Guards\GuardTasks\Commands\" />
+    <Folder Include="Guards\GuardTasks\Commands\Edit\" />
   </ItemGroup>
 
 </Project>

@@ -55,9 +55,6 @@
             this.RuleFor(s => s.Longtitude)
                 .InclusiveBetween(GeoCoordinates.MinLongtitude, GeoCoordinates.MaxLongtitude);
 
-            this.RuleFor(s => s.ControlUnitSerialNumber)
-                .NotEmpty();
-
         }
     }
 }
