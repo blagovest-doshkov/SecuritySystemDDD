@@ -1,14 +1,14 @@
-﻿using SecuritySystem.Application.Systems.Querries;
-using SecuritySystem.Domain.Common;
-using SecuritySystem.Domain.Systems.Models;
-using SecuritySystem.Domain.Systems.Specifications;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace SecuritySystem.Application.Systems.Queries.Common
+﻿namespace SecuritySystem.Application.Systems.Queries.Common
 {
+    using SecuritySystem.Application.Systems.Querries;
+    using SecuritySystem.Domain.Common;
+    using SecuritySystem.Domain.Systems.Models;
+    using SecuritySystem.Domain.Systems.Specifications;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
+
     public abstract class AlarmSystemsQuery
     {
         private const int AlarmSystemsPerPage = 10;

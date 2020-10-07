@@ -7,8 +7,6 @@
     using static Domain.Common.Models.ModelConstants.Contact;
     using static Domain.Common.Models.ModelConstants.PhoneNumber;
     using static Domain.Common.Models.ModelConstants.GeoCoordinates;
-    using SecuritySystem.Domain.Common.Models;
-    using SecuritySystem.Domain.ControlCenter.Models;
 
     public class AlarmEventCommandValidator<TCommand> : AbstractValidator<AlarmEventCommand<TCommand>>
         where TCommand : EntityCommand<int>

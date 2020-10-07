@@ -1,7 +1,6 @@
 ﻿namespace SecuritySystem.Application.ControlCenter.Commands.Common
 {
     using Application.Common;
-    using System;
 
     public abstract class AlarmEventCommand<TCommand> : EntityCommand<int>
         where TCommand : EntityCommand<int>
