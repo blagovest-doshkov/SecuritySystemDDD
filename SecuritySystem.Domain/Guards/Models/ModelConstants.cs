@@ -15,5 +15,11 @@
             public const int MinStreetNameLength = 2;
             public const int MaxStreetNameLength = 200;
         }
+
+        public class GuardUnit
+        {
+            public const int MinNameLength = 2;
+            public const int MaxNameLength = 200;
+        }
     }
 }

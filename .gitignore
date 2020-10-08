@@ -5,3 +5,9 @@
 /SecuritySystem.Domain/Guards/Models/PendingFeatures
 /SecuritySystem.Domain/Systems/Exceptions/Pending Features
 /SecuritySystem.Domain/Systems/Models/Pending Features
+/SecuritySystem.Infrastructure/obj
+/SecuritySystem.Infrastructure/bin
+/SecuritySystem.Startup/obj
+/SecuritySystem.Startup/bin
+/SecuritySystem.Web/bin
+/SecuritySystem.Web/obj

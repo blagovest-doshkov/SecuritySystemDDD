@@ -3,9 +3,10 @@
     using Common.Models;
     using Models;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public interface ILocationGuardPatrolService
     {
-        GuardPatrol FindClosestPatrol(GeoCoordinates targeLocation, IEnumerable<GuardPatrol> patrols);
+        Task<GuardPatrol> FindNearestPatrol(GeoCoordinates targetLocation, IEnumerable<GuardPatrol> patrols);
     }
 }
