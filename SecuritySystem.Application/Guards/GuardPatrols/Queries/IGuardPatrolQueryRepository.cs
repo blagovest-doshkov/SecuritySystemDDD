@@ -1,11 +1,11 @@
-﻿namespace SecuritySystem.Application.Guards.Querries
+﻿namespace SecuritySystem.Application.Guards.GuardPatrols.Queries
 {
-    using Domain.Common;
-    using Domain.Guards.Models;
-    using Application.Common;
+    using SecuritySystem.Application.Common;
+    using SecuritySystem.Domain.Common;
+    using SecuritySystem.Domain.Guards.Models;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
 
     public interface IGuardPatrolQueryRepository : IQueryRepository<GuardPatrol>
     {
@@ -14,6 +14,7 @@
             int skip = 0,
             int take = int.MaxValue,
             CancellationToken cancellationToken = default);
+
 
         Task<int> Total(
             Specification<GuardPatrol> guardPatrolSpecification,

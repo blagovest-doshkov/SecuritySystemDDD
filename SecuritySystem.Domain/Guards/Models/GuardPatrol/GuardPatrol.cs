@@ -23,6 +23,12 @@
             return this;
         }
 
+        public GuardPatrol UpdateLocation(double latitude, double longtitude)
+        {
+            this.GeoLocation = new GeoCoordinates(latitude, longtitude);
+            return this;
+        }
+
         public GuardPatrol SetAvailabilityTo(bool state)
         {
             this.IsAvailable = state;

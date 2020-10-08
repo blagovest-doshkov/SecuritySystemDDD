@@ -64,6 +64,13 @@
             return this;
         }
 
+        public AlarmEvent UpdateNotes(string notes)
+        {
+            ValidateNotes(notes);
+            this.Notes = notes;
+            return this;
+        }
+
         private void ValidateNotes(string notes)
         {
             Validator.StringLength<InvalidAlarmEventException>(notes, MinNotesLength, MaxNotesLength, nameof(this.Notes));
