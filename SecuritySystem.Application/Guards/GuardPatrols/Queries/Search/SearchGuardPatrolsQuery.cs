@@ -2,7 +2,6 @@
 {
     using MediatR;
     using SecuritySystem.Application.Guards.GuardPatrols.Queries.Common;
-    using SecuritySystem.Domain.Guards.Models;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -20,7 +19,7 @@
                 SearchGuardPatrolsQuery request,
                 CancellationToken cancellationToken)
             {
-                var list = await base.GetGuardPatrolListings<GuardPatrol>(request, cancellationToken);
+                var list = await base.GetGuardPatrolListings(request, cancellationToken);
 
                 var totalPages = await base.GetTotalPages(request, cancellationToken);
 

@@ -24,13 +24,13 @@
                 this.guardPatrolQueryRepository = guardPatrolQueryRepository;
             }
 
-            protected async Task<IEnumerable<TOutputModel>> GetGuardPatrolListings<TOutputModel>(
+            protected async Task<IEnumerable<GuardPatrol>> GetGuardPatrolListings(
                 GuardPatrolsQuery request,
                 CancellationToken cancellationToken)
             {
                 var specification = this.GetGuardPatrolSpecification(request);
                 var skip = (request.Page - 1) * GuardPatrolsPerPage;
-                return await this.guardPatrolQueryRepository.GetGuardPatrolListings<TOutputModel>(
+                return await this.guardPatrolQueryRepository.GetGuardPatrolListings(
                     specification,
                     skip,
                     GuardPatrolsPerPage,

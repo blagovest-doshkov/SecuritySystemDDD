@@ -3,7 +3,6 @@
     using Common;
     using MediatR;
     using SecuritySystem.Application.ControlCenter.Querries;
-    using SecuritySystem.Domain.ControlCenter.Models;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -19,7 +18,7 @@
                 SearchAlarmEventsQuery request,
                 CancellationToken cancellationToken)
             {
-                var alarmEvents = await base.GetAlarmEventListing<AlarmEvent>(request, cancellationToken);
+                var alarmEvents = await base.GetAlarmEventListing(request, cancellationToken);
                 var totalPages = await base.GetTotalPages(request, cancellationToken);
 
                 return new SearchAlarmEventsOutputModel(alarmEvents, request.Page, totalPages);

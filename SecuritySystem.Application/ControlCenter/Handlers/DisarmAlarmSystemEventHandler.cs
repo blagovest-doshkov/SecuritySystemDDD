@@ -18,7 +18,7 @@
 
         public async Task Handle(DisarmAlarmSystemEvent domainEvent)
         {
-            var alarmEvent = await this.alarmEventDomainRepository.FidActiveEventByAlarmSystemId(domainEvent.AlarmSystemId);
+            var alarmEvent = await this.alarmEventDomainRepository.FindActiveEventByAlarmSystemId(domainEvent.AlarmSystemId);
 
             alarmEvent.UpdateState(AlarmEventState.Handled);
 

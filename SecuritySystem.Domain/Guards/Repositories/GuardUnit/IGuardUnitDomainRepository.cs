@@ -7,7 +7,7 @@
 
     public interface IGuardUnitDomainRepository : IDomainRepository<GuardUnit>
     {
-        Task<GuardTask> Find(int id, CancellationToken cancellationToken = default);
+        Task<GuardUnit> Find(int id, CancellationToken cancellationToken = default);
 
         Task<bool> Delete(int id, CancellationToken cancellationToken = default);
 

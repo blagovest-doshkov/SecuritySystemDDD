@@ -28,13 +28,13 @@
                 this.alarmSystemQueryRepository = alarmSystemQueryRepository;
             }
 
-            protected Task<IEnumerable<TOutputModel>> GetAlarmSystemListing<TOutputModel>(
+            protected Task<IEnumerable<AlarmSystem>> GetAlarmSystemListing(
                 AlarmSystemsQuery request, 
                 CancellationToken cancellationToken = default)
             {
                 var alarmSystemSpecification = this.GetAlarmSystemSpecification(request);
                 var skip = (request.Page - 1) * AlarmSystemsPerPage;
-                return this.alarmSystemQueryRepository.GetAlarmSystemListings<TOutputModel>(alarmSystemSpecification, skip, take: AlarmSystemsPerPage, cancellationToken);
+                return this.alarmSystemQueryRepository.GetAlarmSystemListings(alarmSystemSpecification, skip, take: AlarmSystemsPerPage, cancellationToken);
             }
 
             protected async Task<int> GetTotalPages(

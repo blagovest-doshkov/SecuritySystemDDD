@@ -26,13 +26,13 @@
                 this.alarmEventQueryRepository = alarmEventQueryRepository;
             }
 
-            protected Task<IEnumerable<TOutputModel>> GetAlarmEventListing<TOutputModel>(
+            protected Task<IEnumerable<AlarmEvent>> GetAlarmEventListing(
                 AlarmEventsQuery request, 
                 CancellationToken cancellationToken = default)
             {
                 var alarmEventSpecification = this.GetAlarmEventSpecification(request);
                 var skip = (request.Page - 1) * AlarmEventsPerPage;
-                return this.alarmEventQueryRepository.GetAlarmEventListings<TOutputModel>(alarmEventSpecification, skip, take: AlarmEventsPerPage, cancellationToken);
+                return this.alarmEventQueryRepository.GetAlarmEventListings(alarmEventSpecification, skip, take: AlarmEventsPerPage, cancellationToken);
             }
 
             protected async Task<int> GetTotalPages(

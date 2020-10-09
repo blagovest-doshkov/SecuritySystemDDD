@@ -43,7 +43,7 @@
 
             await this.guardTaskDomainRepository.Save(guardTask); //In order ID to be generated in DB should be tested without this line
 
-            var availablePatrols = await this.guardPatrolQueryRepository.GetGuardPatrolListings<GuardPatrol>(new GuardPatrolOnlyAvailableSpecification(true));
+            var availablePatrols = await this.guardPatrolQueryRepository.GetGuardPatrolListings(new GuardPatrolOnlyAvailableSpecification(true));
             var nearestPatrol = await this.locationGuardPatrolService.FindNearestPatrol(guardTask.Address.Coordinates, availablePatrols);
 
             guardTask.AssignGuardPatrol(nearestPatrol);

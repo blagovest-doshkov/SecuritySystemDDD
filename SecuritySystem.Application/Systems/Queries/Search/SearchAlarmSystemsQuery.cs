@@ -19,7 +19,7 @@
                 SearchAlarmSystemsQuery request,
                 CancellationToken cancellationToken)
             {
-                var alarmSystems = await base.GetAlarmSystemListing<AlarmSystem>(request, cancellationToken);
+                var alarmSystems = await base.GetAlarmSystemListing(request, cancellationToken);
                 var totalPages = await base.GetTotalPages(request, cancellationToken);
 
                 return new SearchAlarmSystemsOutputModel(alarmSystems, request.Page, totalPages);

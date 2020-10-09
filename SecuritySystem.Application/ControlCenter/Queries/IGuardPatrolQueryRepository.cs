@@ -9,7 +9,7 @@
 
     public interface IAlarmEventQueryRepository : IQueryRepository<AlarmEvent>
     {
-        Task<IEnumerable<TOutputModel>> GetAlarmEventListings<TOutputModel>(
+        Task<IEnumerable<AlarmEvent>> GetAlarmEventListings(
             Specification<AlarmEvent> alarmEventSpecification,
             int skip = 0,
             int take = int.MaxValue,

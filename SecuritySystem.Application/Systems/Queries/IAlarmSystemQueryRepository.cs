@@ -10,7 +10,7 @@
 
     public interface IAlarmSystemQueryRepository : IQueryRepository<AlarmSystem>
     {
-        Task<IEnumerable<TOutputModel>> GetAlarmSystemListings<TOutputModel>(
+        Task<IEnumerable<AlarmSystem>> GetAlarmSystemListings(
             Specification<AlarmSystem> alarmSystemSpecification,
             int skip = 0,
             int take = int.MaxValue,

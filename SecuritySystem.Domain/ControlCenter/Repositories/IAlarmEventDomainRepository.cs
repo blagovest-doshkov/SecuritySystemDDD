@@ -12,6 +12,6 @@
 
         Task<bool> Delete(int id, CancellationToken cancellationToken = default);
 
-        Task<AlarmEvent> FidActiveEventByAlarmSystemId(int AlarmSystemId, CancellationToken cancellationToken = default);
+        Task<AlarmEvent> FindActiveEventByAlarmSystemId(int AlarmSystemId, CancellationToken cancellationToken = default);
     }
 }

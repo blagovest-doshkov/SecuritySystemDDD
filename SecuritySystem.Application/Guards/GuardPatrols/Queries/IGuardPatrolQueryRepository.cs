@@ -9,7 +9,7 @@
 
     public interface IGuardPatrolQueryRepository : IQueryRepository<GuardPatrol>
     {
-        Task<IEnumerable<TOutputModel>> GetGuardPatrolListings<TOutputModel>(
+        Task<IEnumerable<GuardPatrol>> GetGuardPatrolListings(
             Specification<GuardPatrol> guardPatrolSpecification,
             int skip = 0,
             int take = int.MaxValue,
