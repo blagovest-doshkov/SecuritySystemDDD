@@ -13,9 +13,12 @@
             this IServiceCollection services,
             IConfiguration configuration)
             => services
-                .AddMediatR(Assembly.GetExecutingAssembly())
-                .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>))
-                .AddEventHandlers();
+                .Configure<ApplicationSettings>(
+                    configuration.GetSection(nameof(ApplicationSettings)),
+                    options => options.BindNonPublicProperties = true)
+                .AddMediatR(Assembly.GetExecutingAssembly())               
+                .AddEventHandlers()
+                .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
         private static IServiceCollection AddEventHandlers(this IServiceCollection services)
             => services
