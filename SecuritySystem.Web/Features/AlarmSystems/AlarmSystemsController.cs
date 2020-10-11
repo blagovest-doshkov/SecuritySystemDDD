@@ -26,7 +26,6 @@
             => await this.Send(query);
 
         [HttpPost]
-        [Authorize]
         public async Task<ActionResult<CreateAlarmSystemOutputModel>> Create(
            CreateAlarmSystemCommand command)
            => await this.Send(command);
