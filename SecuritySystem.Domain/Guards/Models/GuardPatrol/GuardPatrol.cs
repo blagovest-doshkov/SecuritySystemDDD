@@ -15,7 +15,7 @@
 
         internal GuardPatrol() 
         {
-            this.GeoLocation = new GeoCoordinates(DefaultOfficeLatitude, DefaultOfficeLongtitude);
+            this.GeoLocation = new GeoCoordinates(DefaultOfficeLatitude, DefaultOfficelongitude);
             this.IsAvailable = false;
 
             this.guardUnits = new HashSet<GuardUnit>();
@@ -41,9 +41,9 @@
             return this;
         }
 
-        public GuardPatrol UpdateLocation(double latitude, double longtitude)
+        public GuardPatrol UpdateLocation(double latitude, double longitude)
         {
-            this.GeoLocation = new GeoCoordinates(latitude, longtitude);
+            this.GeoLocation = new GeoCoordinates(latitude, longitude);
             return this;
         }
 

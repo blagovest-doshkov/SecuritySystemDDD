@@ -2,7 +2,7 @@
 {
     using Models;
 
-    public class GuardPatroltFactory : IGuardPatrolFactory
+    public class GuardPatrolFactory : IGuardPatrolFactory
     {
         public GuardPatrol Build()
         {

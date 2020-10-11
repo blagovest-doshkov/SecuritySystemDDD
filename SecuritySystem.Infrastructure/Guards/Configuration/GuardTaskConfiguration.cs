@@ -22,7 +22,9 @@
                 .Property(t => t.GuardTaskDateTime);
 
             builder
-                .Property(t => t.AssignedPatrol);
+                .HasOne(t => t.AssignedPatrol)
+                .WithMany()
+                .HasForeignKey("GuardPatrolId");
 
             builder
                 .OwnsOne(t => t.State, s => 

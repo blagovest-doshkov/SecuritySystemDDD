@@ -18,7 +18,7 @@
             string city,
             string street,
             double latitude,
-            double longtitude);
+            double longitude);
 
         IAlarmSystemFactory WithContact(string contactName, string contactPhoneNumber);
         IAlarmSystemFactory WithContact(Contact contact);

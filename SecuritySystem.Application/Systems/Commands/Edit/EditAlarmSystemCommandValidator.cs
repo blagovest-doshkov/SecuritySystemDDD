@@ -5,7 +5,7 @@
 
     public class EditAlarmSystemCommandValidator : AbstractValidator<EditAlarmSystemCommand>
     {
-        EditAlarmSystemCommandValidator()
+        public EditAlarmSystemCommandValidator()
         {
             this.Include(new AlarmSystemCommandValidator<EditAlarmSystemCommand>());
         }

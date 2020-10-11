@@ -19,6 +19,16 @@
             this.Coordinates = coordinates;
         }
 
+        //EF workaround for migrations
+        internal Address(
+            string city,
+            string streetInfo)
+        {
+            this.City = city;
+            this.StreetInfo = streetInfo;
+            this.Coordinates = default!;
+        }
+
         public string City { get; private set; }
         public string StreetInfo { get; private set; }
         public GeoCoordinates Coordinates { get; private set; }

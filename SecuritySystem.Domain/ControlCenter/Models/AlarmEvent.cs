@@ -26,6 +26,22 @@
             this.State = AlarmEventState.InProgress;
         }
 
+        //EF workaround for migrations
+        internal AlarmEvent(
+            int systemId,
+            string notes)
+        {
+            ValidateNotes(notes);
+
+            this.SystemId = systemId;
+            this.Notes = notes;
+            this.Address = default!;
+            this.Contact = default!;
+            this.EventDateTime = DateTime.UtcNow;
+            this.AssignedGuardId = default!;
+            this.State = AlarmEventState.InProgress;
+        }
+
         public int SystemId { get; private set; }
         public string Notes { get; private set; }
         public Address Address { get; private set; }

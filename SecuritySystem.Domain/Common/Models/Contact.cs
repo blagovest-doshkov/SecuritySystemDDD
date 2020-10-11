@@ -14,6 +14,15 @@
             this.PhoneNumber = phoneNumber;
         }
 
+        //EF workaround ...
+        internal Contact(string name)
+        {
+            ValidateName(name);
+
+            this.Name = name;
+            this.PhoneNumber = default!;
+        }
+
         public string Name { get; private set; }
         public PhoneNumber PhoneNumber { get; private set; }
 

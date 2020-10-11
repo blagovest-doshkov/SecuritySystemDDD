@@ -69,7 +69,7 @@
             builder
                 .HasOne(s => s.Address)
                 .WithOne()
-                .HasForeignKey("AddressId")
+                .HasForeignKey<AlarmSystem>("AddressId")
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

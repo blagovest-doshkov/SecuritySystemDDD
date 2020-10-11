@@ -53,6 +53,8 @@
                     .AddClasses(classes => classes
                         .AssignableTo(typeof(IDomainRepository<>))
                         .AssignableTo(typeof(IQueryRepository<>)))
+                    .AddClasses(classes => classes
+                        .AssignableTo(typeof(IDomainRepository<>)))
                     .AsImplementedInterfaces()
                     .WithTransientLifetime());
 

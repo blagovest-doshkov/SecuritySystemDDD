@@ -9,7 +9,7 @@
     public class UpdateLocationCommand: EntityCommand<int>, IRequest<Result>
     {
         public double latitude { get; set; }
-        public double longtitude { get; set; }
+        public double longitude { get; set; }
 
         public class UpdateLocationCommandHandler : IRequestHandler<UpdateLocationCommand, Result>
         {
@@ -28,7 +28,7 @@
 
                 var guardPatrol = await this.guardPatrolDomainRepository.Find(request.Id, cancellationToken);
 
-                guardPatrol.UpdateLocation(request.latitude, request.longtitude);
+                guardPatrol.UpdateLocation(request.latitude, request.longitude);
 
                 await this.guardPatrolDomainRepository.Save(guardPatrol, cancellationToken);
 

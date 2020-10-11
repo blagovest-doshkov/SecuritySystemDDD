@@ -34,12 +34,12 @@
             string city,
             string streetInfo,
             double latitude,
-            double longtitude)
+            double longitude)
         {
             return WithAddress(new Address(
                 city,
                 streetInfo,
-                new GeoCoordinates(latitude,longtitude)));
+                new GeoCoordinates(latitude,longitude)));
         }
 
         public IAlarmEventFactory WithAddress(Address address)

@@ -10,20 +10,20 @@
     public class AlarmSystem : Entity<int>, IAggregateRoot
     {
         internal AlarmSystem(
-            int userId,
+            int ownerId,
             string name,
             string notes,
             Address address,
             Contact contactsInfo
            )
         {
-            Validate(userId, name, notes);
+            Validate(ownerId, name, notes);
 
             //Meta
             this.Name = name;
             this.Notes = notes;
             this.Address = address;
-            this.OwnerId = userId;
+            this.OwnerId = ownerId;
             this.ContactsInfo = contactsInfo;
 
             //Installtion
@@ -37,6 +37,25 @@
             this.AlarmTriggered = false;
 
             //this.zones = new HashSet<Zone>();
+        }
+
+        //EF workaround for migrations
+        internal AlarmSystem(
+            int ownerId,
+            string name,
+            string notes
+           )
+        {
+            this.Name = name;
+            this.Notes = notes;
+            this.Address = default!;
+            this.OwnerId = ownerId;
+            this.ContactsInfo = default!;
+            this.IsInstalled = false;
+            this.IsInConfiguration = false;
+            this.ControlUnitSerialNumber = default!;
+            this.IsArmed = false;
+            this.AlarmTriggered = false;
         }
 
         //Status Properties
@@ -72,13 +91,13 @@
             string city,
             string street,
             double latitude,
-            double longtitude)
+            double longitude)
         {
             this.Address.UpdateCountry(country);
             this.Address.UpdateProvince(province);
             this.Address.UpdateCity(city);
             this.Address.UpdateStreet(street);
-            this.Address.UpdateCoordinates(latitude, longtitude);
+            this.Address.UpdateCoordinates(latitude, longitude);
             return this;
         }
         public AlarmSystem UpdateAddress(Address address)

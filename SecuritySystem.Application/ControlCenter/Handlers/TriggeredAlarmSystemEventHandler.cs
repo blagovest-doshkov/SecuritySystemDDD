@@ -25,7 +25,7 @@
                 .WithSystemId(domainEvent.AlarmSystemId)
                 .WithNotes(domainEvent.Notes)
                 .WithContact(domainEvent.ContactName, domainEvent.ContactPhoneNumber)
-                .WithAddress(domainEvent.City, domainEvent.Street, domainEvent.Latitude, domainEvent.Longtitude)
+                .WithAddress(domainEvent.City, domainEvent.Street, domainEvent.Latitude, domainEvent.longitude)
                 .Build();
 
             await this.alarmEventDomainRepository.Save(alarmEvent);

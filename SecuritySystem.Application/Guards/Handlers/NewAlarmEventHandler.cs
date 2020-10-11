@@ -38,7 +38,7 @@
                     domainEvent.City,
                     domainEvent.Street,
                     domainEvent.Latitude,
-                    domainEvent.Longtitude)
+                    domainEvent.longitude)
                 .Build();
 
             await this.guardTaskDomainRepository.Save(guardTask); //In order ID to be generated in DB should be tested without this line

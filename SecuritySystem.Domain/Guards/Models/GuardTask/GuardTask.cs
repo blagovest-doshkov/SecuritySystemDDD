@@ -24,6 +24,20 @@
             this.AssignedPatrol = default!;            
         }
 
+        //EF workaround for migrations
+        internal GuardTask(
+            int eventId,
+            DateTime eventDateTime
+            )
+        {
+            this.GuardTaskDateTime = DateTime.UtcNow;
+            this.State = GuardTaskState.InProgress;
+            this.EventId = eventId;
+            this.EventDateTime = eventDateTime;
+            this.Address = default!;
+            this.AssignedPatrol = default!;
+        }
+
         public int EventId { get; private set; }
         public GuardTaskState State { get; private set; }
         public GuardPatrol AssignedPatrol { get; private set; }

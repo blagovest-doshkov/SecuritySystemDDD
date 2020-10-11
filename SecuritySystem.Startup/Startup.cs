@@ -20,8 +20,9 @@ namespace SecuritySystem.Startup
         public void ConfigureServices(IServiceCollection services)
             => services
                 .AddDomain()
+                            .AddInfrastructure(this.Configuration)
                 .AddApplication(this.Configuration)
-                .AddInfrastructure(this.Configuration)
+
                 .AddWebComponents();
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

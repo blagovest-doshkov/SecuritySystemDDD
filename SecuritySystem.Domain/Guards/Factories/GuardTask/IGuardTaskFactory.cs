@@ -16,7 +16,7 @@
         IGuardTaskFactory WithAddress(string city,
             string streetInfo,
             double latitude,
-            double longtitude);
+            double longitude);
     }
 
 }

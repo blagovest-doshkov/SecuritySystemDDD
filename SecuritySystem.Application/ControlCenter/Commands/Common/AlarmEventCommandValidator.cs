@@ -46,9 +46,9 @@
                 .GreaterThan(MinLatitude)
                 .LessThan(MaxLatitude);
 
-            this.RuleFor(s => s.Longtitude)
-                .GreaterThan(MinLongtitude)
-                .LessThan(MaxLongtitude);
+            this.RuleFor(s => s.longitude)
+                .GreaterThan(Minlongitude)
+                .LessThan(Maxlongitude);
 
             //this.RuleFor(s => s.EventDateTime)
             //    .NotEmpty();

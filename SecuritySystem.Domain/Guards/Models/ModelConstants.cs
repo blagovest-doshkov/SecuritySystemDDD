@@ -5,7 +5,7 @@
         public class GuardPatrol
         {
             public const double DefaultOfficeLatitude = 42.696189;
-            public const double DefaultOfficeLongtitude = 23.413198;
+            public const double DefaultOfficelongitude = 23.413198;
         }
 
         public class Address

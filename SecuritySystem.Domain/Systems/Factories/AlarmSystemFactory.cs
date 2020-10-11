@@ -51,14 +51,14 @@
             string city,
             string street,
             double latitude,
-            double longtitude)
+            double longitude)
         {
             return WithAddress(new Address(
                 country,
                 province,
                 city,
                 street,
-                new GeoCoordinates(latitude,longtitude)
+                new GeoCoordinates(latitude,longitude)
                 ));
         }
 

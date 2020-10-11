@@ -23,6 +23,20 @@
             this.Coordinates = coordinates;
         }
 
+        //EF workaround for migrations
+        internal Address(
+            string country,
+            string province,
+            string city,
+            string street)
+        {
+            this.Country = country;
+            this.Province = province;
+            this.City = city;
+            this.Street = street;
+            this.Coordinates = default!;
+        }
+
         public string Country { get; private set; }
         public string Province { get; private set; } = default!;
         public string City { get; private set; }
@@ -66,9 +80,9 @@
             return this;
         }
 
-        public Address UpdateCoordinates(double latitude, double longtitude)
+        public Address UpdateCoordinates(double latitude, double longitude)
         {
-            return UpdateCoordinates(new GeoCoordinates(latitude, longtitude));
+            return UpdateCoordinates(new GeoCoordinates(latitude, longitude));
         }
 
         //VALIDATIONS

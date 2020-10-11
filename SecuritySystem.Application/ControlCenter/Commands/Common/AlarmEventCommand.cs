@@ -10,7 +10,7 @@
         public string City { get;  set; } = default!;
         public string StreetInfo { get; set; } = default!;
         public double Latitude { get; set; } = default!;
-        public double Longtitude { get; set; } = default!;
+        public double longitude { get; set; } = default!;
         public string ContactName { get;  set; } = default!;
         public string ContactPhoneNumber { get;  set; } = default!;
         //public DateTime EventDateTime { get;  set; } = default!;

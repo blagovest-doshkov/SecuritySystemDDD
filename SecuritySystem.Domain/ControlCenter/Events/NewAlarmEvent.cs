@@ -12,7 +12,7 @@
             string city,
             string street,
             double latitude,
-            double longtitude
+            double longitude
             )
         {
             this.EventId = eventId;
@@ -22,7 +22,7 @@
             this.City = city;
             this.Street = street;
             this.Latitude = latitude;
-            this.Longtitude = longtitude;
+            this.longitude = longitude;
         }
 
         public int EventId { get; private set; }
@@ -32,7 +32,7 @@
         public string City { get; private set; }
         public string Street { get; private set; }
         public double Latitude { get; private set; }
-        public double Longtitude { get; private set; }
+        public double longitude { get; private set; }
 
         
     }

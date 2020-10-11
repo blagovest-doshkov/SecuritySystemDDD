@@ -5,6 +5,6 @@
 
     public interface IGuardPatrolFactory : IFactory<GuardPatrol>
     {
-    }
 
+    }
 }

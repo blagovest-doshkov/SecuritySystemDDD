@@ -39,9 +39,9 @@
             return this;
         }
 
-        public IGuardTaskFactory WithAddress(string city, string streetInfo, double latitude, double longtitude)
+        public IGuardTaskFactory WithAddress(string city, string streetInfo, double latitude, double longitude)
         {
-            this.Address = new Address(city, streetInfo, new GeoCoordinates(latitude, longtitude));
+            this.Address = new Address(city, streetInfo, new GeoCoordinates(latitude, longitude));
             return this;
         }
 

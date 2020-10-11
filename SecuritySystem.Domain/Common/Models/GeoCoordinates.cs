@@ -6,12 +6,12 @@
 
     public class GeoCoordinates: ValueObject
     {
-        internal GeoCoordinates(double latitude, double longtitude)
+        internal GeoCoordinates(double latitude, double longitude)
         {
-            ValidateCoordinates(latitude, longtitude);
+            ValidateCoordinates(latitude, longitude);
 
             this.Latitude = latitude;
-            this.Longitude = longtitude;
+            this.Longitude = longitude;
         }
 
         public double Latitude { get; private set; }
@@ -48,10 +48,10 @@
         }
 
         //Validations
-        private void ValidateCoordinates(double latitude, double longtitude)
+        private void ValidateCoordinates(double latitude, double longitude)
         {
             ValidateLatitude(latitude);
-            ValidateLongtitude(longtitude);
+            ValidateLongitude(longitude);
         }
 
         private void ValidateLatitude(double latitude)
@@ -59,9 +59,9 @@
             Validator.InRange<InvalidCoordinatesException>(latitude, -90, 90, nameof(this.Latitude));
         }
 
-        private void ValidateLongtitude(double longtitude)
+        private void ValidateLongitude(double longitude)
         {
-            Validator.InRange<InvalidCoordinatesException>(longtitude, -180, 180, nameof(this.Longitude));
+            Validator.InRange<InvalidCoordinatesException>(longitude, -180, 180, nameof(this.Longitude));
         }
 
     }

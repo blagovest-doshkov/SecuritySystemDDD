@@ -15,8 +15,8 @@
         {
             public const int MinLatitude = -90;
             public const int MaxLatitude = 90;
-            public const int MinLongtitude = -180;
-            public const int MaxLongtitude = 180;
+            public const int Minlongitude = -180;
+            public const int Maxlongitude = 180;
             public const double EarthRadiusInKm = 6378.16;
             public const double EarthRadiusInMeters = 6378160;
         }

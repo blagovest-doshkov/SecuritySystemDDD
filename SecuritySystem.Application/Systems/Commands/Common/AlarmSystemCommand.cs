@@ -17,7 +17,7 @@
         public string City { get; private set; } = default!;
         public string Street { get; private set; } = default!;
         public double Latitude { get; private set; }
-        public double Longtitude { get; private set; }
+        public double longitude { get; private set; }
 
         //public string ControlUnitSerialNumber { get; private set; } = default!;
     }

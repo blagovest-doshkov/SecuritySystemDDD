@@ -14,7 +14,7 @@
             string city,
             string streetInfo,
             double latitude,
-            double longtitude);
+            double longitude);
         IAlarmEventFactory WithAddress(Address address);
 
         IAlarmEventFactory WithContact(string contactName, string contactPhoneNumber);

@@ -52,8 +52,8 @@
             this.RuleFor(s => s.Latitude)
                 .InclusiveBetween(GeoCoordinates.MinLatitude, GeoCoordinates.MaxLatitude);
 
-            this.RuleFor(s => s.Longtitude)
-                .InclusiveBetween(GeoCoordinates.MinLongtitude, GeoCoordinates.MaxLongtitude);
+            this.RuleFor(s => s.longitude)
+                .InclusiveBetween(GeoCoordinates.Minlongitude, GeoCoordinates.Maxlongitude);
 
         }
     }
