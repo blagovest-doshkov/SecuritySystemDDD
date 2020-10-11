@@ -6,6 +6,7 @@
     using static ModelConstants.GuardPatrol;
     using System.Collections.Generic;
     using System.Linq;
+    using System;
 
     public class GuardPatrol: Entity<int>, IAggregateRoot
     {
@@ -57,5 +58,6 @@
         {
             Validator.IsNotNull<InvalidLocationGuardPatrolException>(location, nameof(this.GeoLocation));
         }
+
     }
 }

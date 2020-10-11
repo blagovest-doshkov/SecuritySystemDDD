@@ -9,11 +9,13 @@
     using SecuritySystem.Application.Common;
     using SecuritySystem.Application.Identity;
     using SecuritySystem.Domain.Common;
+    using SecuritySystem.Domain.Guards.Services;
     using SecuritySystem.Infrastructure.Common;
     using SecuritySystem.Infrastructure.Common.Events;
     using SecuritySystem.Infrastructure.Common.Persistence;
     using SecuritySystem.Infrastructure.ControlCenter;
     using SecuritySystem.Infrastructure.Guards;
+    using SecuritySystem.Infrastructure.Guards.Services;
     using SecuritySystem.Infrastructure.Identity;
     using SecuritySystem.Infrastructure.Systems;
     using System.Text;
@@ -27,7 +29,8 @@
                 .AddDatabase(configuration)
                 .AddRepositories()
                 .AddIdentity(configuration)
-                .AddTransient<IEventDispatcher, EventDispatcher>();
+                .AddTransient<IEventDispatcher, EventDispatcher>()
+                .AddTransient<ILocationGuardPatrolService, LocationGuardPatrolService>();
 
         private static IServiceCollection AddDatabase(
             this IServiceCollection services,
