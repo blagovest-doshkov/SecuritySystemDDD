@@ -9,6 +9,8 @@ namespace SecuritySystem.Startup
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using SecuritySystem.Web;
+    using SecuritySystem.Web.Middleware;
 
     public class Startup
     {
@@ -18,9 +20,9 @@ namespace SecuritySystem.Startup
         public void ConfigureServices(IServiceCollection services)
             => services
                 .AddDomain()
-                .AddInfrastructure(this.Configuration)
                 .AddApplication(this.Configuration)
-                ;
+                .AddInfrastructure(this.Configuration)
+                .AddWebComponents();
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -29,31 +31,32 @@ namespace SecuritySystem.Startup
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
+            app
+                .UseValidationExceptionHandler()
+                .UseHttpsRedirection()
+                .UseRouting()
+                .UseCors(options => options
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod())
+                .UseAuthentication()
+                .UseAuthorization()
+                .UseEndpoints(endpoints => endpoints
+                    .MapControllers())
+                .Initialize();
 
-            app.Initialize();
+            //app.UseRouting();
 
-            //app
-            //    .UseValidationExceptionHandler()
-            //    .UseHttpsRedirection()
-            //    .UseRouting()
-            //    .UseCors(options => options
-            //        .AllowAnyOrigin()
-            //        .AllowAnyHeader()
-            //        .AllowAnyMethod())
-            //    .UseAuthentication()
-            //    .UseAuthorization()
-            //    .UseEndpoints(endpoints => endpoints
-            //        .MapControllers())
-            //    .Initialize();
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapGet("/", async context =>
+            //    {
+            //        await context.Response.WriteAsync("Hello World!");
+            //    });
+            //});
+
+            //app.Initialize();
         }
     }
 }

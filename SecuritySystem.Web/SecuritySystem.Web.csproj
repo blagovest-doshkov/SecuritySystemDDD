@@ -25,9 +25,5 @@
     <ProjectReference Include="..\SecuritySystem.Application\SecuritySystem.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\ControlCenter\" />
-  </ItemGroup>
-
 
 </Project>
