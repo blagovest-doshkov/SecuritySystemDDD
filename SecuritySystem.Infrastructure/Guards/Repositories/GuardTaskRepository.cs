@@ -8,9 +8,13 @@
     using System.Threading.Tasks;
     using SecuritySystem.Domain.Guards.Repositories.GuardPatrol;
     using System.Linq;
+    using SecuritySystem.Application.Guards.GuardTasks.Queries;
+    using System.Collections.Generic;
+    using SecuritySystem.Domain.Common;
 
     internal class GuardTaskRepository : DataRepository<IGuardsDbContext, GuardTask>,
-        IGuardTaskDomainRepository
+        IGuardTaskDomainRepository,
+        IGuardTaskQueryRepository
     {
         public GuardTaskRepository(IGuardsDbContext db)
             : base(db)
@@ -44,6 +48,24 @@
                 return await this
                     .AllActive()
                     .SingleOrDefaultAsync(t => t.EventId == eventId);
+        }
+
+        public async Task<IEnumerable<GuardTask>> GetGuardTaskListings(
+            Specification<GuardTask> guardTaskSpecification, 
+            int skip = 0, 
+            int take = int.MaxValue, 
+            CancellationToken cancellationToken = default)
+        {
+            return (await (this.All().Where(guardTaskSpecification))
+                .ToListAsync(cancellationToken))
+                    .Skip(skip)
+                    .Take(take);
+        }
+
+        public async Task<int> Total(Specification<GuardTask> guardTaskSpecification, CancellationToken cancellationToken = default)
+        {
+            return await (this.All().Where(guardTaskSpecification))
+                .CountAsync(cancellationToken);
         }
 
         private IQueryable<GuardTask> AllActive()

@@ -6,7 +6,6 @@
     using Domain.Guards.Repositories.GuardPatrol;
     using Infrastructure.Common.Persistence;
     using Microsoft.EntityFrameworkCore;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
@@ -61,9 +60,12 @@
                     .Take(take);
         }
 
-        public Task<int> Total(Specification<GuardPatrol> guardPatrolSpecification, CancellationToken cancellationToken = default)
+        public async Task<int> Total(
+            Specification<GuardPatrol> guardPatrolSpecification, 
+            CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return await(this.All().Where(guardPatrolSpecification))
+                .CountAsync(cancellationToken);
         }
 
         private IQueryable<GuardPatrol> AllAvailable()

@@ -58,7 +58,7 @@
 
         public async Task<int> Total(Specification<AlarmSystem> alarmSystemSpecification, CancellationToken cancellationToken = default)
         {
-            return await (this.Data.AlarmSystems.Where(alarmSystemSpecification))
+            return await (this.All().Where(alarmSystemSpecification))
                         .CountAsync(cancellationToken);
         }
     }
