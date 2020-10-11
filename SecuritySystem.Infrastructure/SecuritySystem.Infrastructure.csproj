@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Common\Events\" />
-    <Folder Include="Common\Persistence\Migrations\" />
   </ItemGroup>
 
 </Project>
