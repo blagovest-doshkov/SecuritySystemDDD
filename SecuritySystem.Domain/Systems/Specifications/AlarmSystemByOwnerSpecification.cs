@@ -7,9 +7,9 @@
 
     public class AlarmSystemByOwnerSpecification : Specification<AlarmSystem>
     {
-        private readonly int? ownerId;
+        private readonly string? ownerId;
 
-        public AlarmSystemByOwnerSpecification(int? ownerId)
+        public AlarmSystemByOwnerSpecification(string? ownerId)
             => this.ownerId = ownerId;
 
         protected override bool Include => this.ownerId != null;

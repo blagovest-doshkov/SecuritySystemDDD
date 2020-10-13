@@ -6,7 +6,7 @@
 
     public class AlarmSystemFactory : IAlarmSystemFactory
     {
-        private int OwnerId;
+        private string OwnerId = default!;
         private string Name = default!;
         private string Notes = default!;
         private Address Address = default!;
@@ -18,7 +18,7 @@
         private bool OwnerIdSet = false;
         private bool ContactsInfoSet = false;
 
-        public IAlarmSystemFactory WithUserId(int userId)
+        public IAlarmSystemFactory WithUserId(string userId)
         {
             this.OwnerIdSet = true;
             this.OwnerId = userId;

@@ -10,7 +10,7 @@
     public class AlarmSystem : Entity<int>, IAggregateRoot
     {
         internal AlarmSystem(
-            int ownerId,
+            string ownerId,
             string name,
             string notes,
             Address address,
@@ -41,7 +41,7 @@
 
         //EF workaround for migrations
         internal AlarmSystem(
-            int ownerId,
+            string ownerId,
             string name,
             string notes
            )
@@ -72,7 +72,7 @@
         public string Name { get; private set; }
         public string Notes { get; private set; }
         public Address Address { get; private set; }
-        public int OwnerId { get; private set; }
+        public string OwnerId { get; private set; }
         public Contact ContactsInfo { get; private set; }
 
         public AlarmSystem UpdateName(string name)
@@ -202,7 +202,7 @@
         //    this.zones.Add(zone);
         //}
 
-        private void Validate(int userId, string name, string notes)
+        private void Validate(string userId, string name, string notes)
         {
             ValidateUserId(userId);
             ValidateName(name);
@@ -214,9 +214,9 @@
         //{
         //    Validator.IsNotNull<InvalidAlarmSystemException>(address, nameof(this.Address));
         //}
-        private void ValidateUserId(int userId)
+        private void ValidateUserId(string userId)
         {
-            Validator.NonNegative<InvalidAlarmSystemException>(userId, nameof(this.OwnerId));
+            Validator.StringNotEmpty<InvalidAlarmSystemException>(userId, nameof(this.OwnerId));
         }
         private void ValidateNotes(string notes)
         {

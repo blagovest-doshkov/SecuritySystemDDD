@@ -5,7 +5,7 @@
     public abstract class AlarmSystemCommand<TCommand> : EntityCommand<int>
         where TCommand : EntityCommand<int>
     {
-        public int OwnerId { get; set; } = default!;
+        public string OwnerId { get; set; } = default!;
         public string Name { get; set; } = default!;
         public string Notes { get; set; } = default!;
 

@@ -11,7 +11,7 @@
         public AlarmSystemCommandValidator()
         {
             this.RuleFor(s => s.OwnerId)
-                .GreaterThan(0);
+                .NotEmpty();
 
             this.RuleFor(s => s.Name)
                 .MinimumLength(AlarmSystem.MinNameLength)

@@ -16,7 +16,7 @@
 
         public bool? Armed { get; set; }
         public bool? Installed { get; set; }
-        public int? OwnerId { get; set; }
+        public string? OwnerId { get; set; }
         public bool? Triggered { get; set; }
 
         public abstract class AlarmSystemsQueryHandler

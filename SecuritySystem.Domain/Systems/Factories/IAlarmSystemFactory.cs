@@ -6,7 +6,7 @@
 
     public interface IAlarmSystemFactory : IFactory<AlarmSystem>
     {
-        IAlarmSystemFactory WithUserId(int userId);
+        IAlarmSystemFactory WithUserId(string userId);
         IAlarmSystemFactory WithName(string name);
 
         IAlarmSystemFactory WithNotes(string notes);
