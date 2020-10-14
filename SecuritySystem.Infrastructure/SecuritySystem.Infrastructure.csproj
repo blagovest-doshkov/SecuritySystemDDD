@@ -13,6 +13,15 @@
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
   </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Common\Persistence\Migrations\20201014084314_AlarmSystemsControlUnitSerialNumber.cs" />
+      <Compile Remove="Common\Persistence\Migrations\20201014084314_AlarmSystemsControlUnitSerialNumber.Designer.cs" />
+      <Compile Remove="Common\Persistence\Migrations\20201014084520_AlarmSystemsControlUnitSerialNumber.cs" />
+      <Compile Remove="Common\Persistence\Migrations\20201014084520_AlarmSystemsControlUnitSerialNumber.Designer.cs" />
+      <Compile Remove="Common\Persistence\Migrations\20201014084604_AlarmSystemsControlUnitSerialNumber.cs" />
+      <Compile Remove="Common\Persistence\Migrations\20201014084604_AlarmSystemsControlUnitSerialNumber.Designer.cs" />
+    </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.4" />

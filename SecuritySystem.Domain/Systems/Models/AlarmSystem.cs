@@ -65,7 +65,7 @@
         //Installation Properties
         public bool IsInConfiguration { get; private set; }
         public bool IsInstalled { get; private set; }
-        public string ControlUnitSerialNumber { get; private set; }
+        public string? ControlUnitSerialNumber { get; private set; } = default!;
         //public string UniqueId { get; private set; }
 
         //META
@@ -241,9 +241,10 @@
         //    Validator.StringNotEmpty<InvalidAlarmSystemException>(uniqueId, nameof(this.UniqueId));
         //}
 
-        private void ValidateControlUnitSerialNumber(string serialNumber)
+        private void ValidateControlUnitSerialNumber(string? serialNumber)
         {
-            Validator.StringNotEmpty<InvalidAlarmSystemException>(serialNumber, nameof(this.ControlUnitSerialNumber));
+            Validator.IsNotNull<InvalidAlarmSystemException>(serialNumber, nameof(this.ControlUnitSerialNumber));
+            Validator.StringNotEmpty<InvalidAlarmSystemException>(new string(serialNumber), nameof(this.ControlUnitSerialNumber));
         }
         private void ValidateInConfigurationMode()
         {

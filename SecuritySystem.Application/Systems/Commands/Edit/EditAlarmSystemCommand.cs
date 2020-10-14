@@ -33,7 +33,7 @@
                         request.City,
                         request.Street,
                         request.Latitude,
-                        request.longitude)
+                        request.Longitude)
                     .UpdateContactsInfo(
                         request.ContactName,
                         request.ContactPhoneNumber);

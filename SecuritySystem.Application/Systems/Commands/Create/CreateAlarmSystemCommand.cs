@@ -35,8 +35,8 @@
                         request.Province,
                         request.City,
                         request.Street,
-                        request.Latitude, 
-                        request.longitude)
+                        request.Latitude,
+                        request.Longitude)
                     .WithContact(
                         request.ContactName,
                         request.ContactPhoneNumber)

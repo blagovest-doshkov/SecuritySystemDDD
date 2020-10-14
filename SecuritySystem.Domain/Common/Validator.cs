@@ -13,7 +13,7 @@
             ThrowException<TException>($"{name} cannot be null ot empty.");
         }
 
-        public static void IsNotNull<TException>(object value, string name = "Value")
+        public static void IsNotNull<TException>(object? value, string name = "Value")
             where TException : BaseDomainException, new()
         {
             if (value != null)

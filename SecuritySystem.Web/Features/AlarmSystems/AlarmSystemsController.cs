@@ -27,7 +27,7 @@
 
         [HttpPost]
         public async Task<ActionResult<CreateAlarmSystemOutputModel>> Create(
-           CreateAlarmSystemCommand command)
+           [FromBody] CreateAlarmSystemCommand command)
            => await this.Send(command);
 
         [HttpPut]
