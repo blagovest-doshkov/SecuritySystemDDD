@@ -25,7 +25,7 @@
                 var alarmSystem = await this.alarmSystemDomainRepository
                     .Find(request.Id, cancellationToken);
 
-                alarmSystem.Arm();
+                alarmSystem.TriggerAlarm();
 
                 await this.alarmSystemDomainRepository.Save(alarmSystem, cancellationToken);
 

@@ -51,7 +51,7 @@
 
         public IAlarmEventFactory WithContact(string contactName, string contactPhoneNumber)
         {
-            return WithContact(contactName, contactPhoneNumber);
+            return WithContact(new Contact(contactName, contactPhoneNumber));
         }
 
         public IAlarmEventFactory WithContact(Contact contact)

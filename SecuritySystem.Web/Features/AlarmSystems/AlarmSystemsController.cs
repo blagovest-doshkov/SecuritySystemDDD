@@ -8,6 +8,7 @@
     using SecuritySystem.Application.Systems.Commands.Delete;
     using SecuritySystem.Application.Systems.Commands.Edit;
     using SecuritySystem.Application.Systems.Commands.Installation;
+    using SecuritySystem.Application.Systems.Commands.Status;
     using SecuritySystem.Application.Systems.Queries.Details;
     using SecuritySystem.Application.Systems.Queries.Search;
     using SecuritySystem.Domain.Systems.Models;
@@ -64,6 +65,24 @@
         [Route(Id + PathSeparator + nameof(AssignControlUnit))]
         public async Task<ActionResult> AssignControlUnit(
             int id, AssignControlUnitCommand commmand)
+            => await this.Send(commmand.SetId(id));
+
+        [HttpPut]
+        [Route(Id + PathSeparator + nameof(ArmAlarm))]
+        public async Task<ActionResult> ArmAlarm(
+            int id, [FromRoute] ArmAlarmSystemCommand commmand)
+            => await this.Send(commmand.SetId(id));
+
+        [HttpPut]
+        [Route(Id + PathSeparator + nameof(DisarmAlarm))]
+        public async Task<ActionResult> DisarmAlarm(
+            int id, [FromRoute] DisarmAlarmSystemCommand commmand)
+            => await this.Send(commmand.SetId(id));
+
+        [HttpPut]
+        [Route(Id + PathSeparator + nameof(TriggerAlarm))]
+        public async Task<ActionResult> TriggerAlarm(
+            int id, [FromRoute] TriggerAlarmSystemCommand commmand)
             => await this.Send(commmand.SetId(id));
     }
 }

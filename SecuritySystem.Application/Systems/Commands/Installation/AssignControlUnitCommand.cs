@@ -9,7 +9,7 @@
 
     public class AssignControlUnitCommand : EntityCommand<int>, IRequest<Result>
     {
-        public string ControlUnitSerialNumber { get; private set; } = default!;
+        public string ControlUnitSerialNumber { get;  set; } = default!;
 
         public class AssignControlUnitCommandHandler : IRequestHandler<AssignControlUnitCommand, Result>
         {
