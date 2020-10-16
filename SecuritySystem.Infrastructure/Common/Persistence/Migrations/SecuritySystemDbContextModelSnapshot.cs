@@ -163,6 +163,10 @@ namespace SecuritySystem.Infrastructure.Common.Persistence.Migrations
                     b.Property<DateTime>("EventDateTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("EventUniqueId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Notes")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
@@ -186,6 +190,9 @@ namespace SecuritySystem.Infrastructure.Common.Persistence.Migrations
                     b.Property<bool>("IsAvailable")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("TaskAccepted")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("GuardPatrols");
@@ -201,8 +208,9 @@ namespace SecuritySystem.Infrastructure.Common.Persistence.Migrations
                     b.Property<DateTime>("EventDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("EventId")
-                        .HasColumnType("int");
+                    b.Property<string>("EventUniqueId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("GuardPatrolId")
                         .HasColumnType("int");
@@ -532,6 +540,10 @@ namespace SecuritySystem.Infrastructure.Common.Persistence.Migrations
                                 .HasColumnType("int")
                                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                            b1.Property<string>("Name")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
                             b1.Property<int>("Value")
                                 .HasColumnType("int");
 
@@ -628,6 +640,10 @@ namespace SecuritySystem.Infrastructure.Common.Persistence.Migrations
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int")
                                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Name")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<int>("Value")
                                 .HasColumnType("int");

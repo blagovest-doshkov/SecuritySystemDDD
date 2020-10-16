@@ -11,7 +11,7 @@
 
         Task<bool> Delete(int id, CancellationToken cancellationToken = default);
 
-        Task<GuardTask> FindActiveTaskByEventId(int eventId, CancellationToken cancellationToken = default);
+        Task<GuardTask> FindActiveTaskByEventUniqueId(string eventUniqueId, CancellationToken cancellationToken = default);
 
     }
 }

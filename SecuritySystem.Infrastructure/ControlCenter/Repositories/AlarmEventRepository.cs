@@ -72,7 +72,14 @@
         {
             return this
                 .All()
-                .Where(alarm => alarm.State != AlarmEventState.Handled);
+                .Where(alarm => alarm.State.Value != AlarmEventState.Handled.Value);
+        }
+
+        public Task<AlarmEvent> FindActiveEventByEventUniqueId(string EventUniqueId, CancellationToken cancellationToken = default)
+        {
+            return this
+                    .All()
+                    .SingleOrDefaultAsync(alarm => alarm.EventUniqueId == EventUniqueId);
         }
     }
 }

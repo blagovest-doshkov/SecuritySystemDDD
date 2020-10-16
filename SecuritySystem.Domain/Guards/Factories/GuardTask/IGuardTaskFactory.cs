@@ -7,7 +7,7 @@
 
     public interface IGuardTaskFactory : IFactory<GuardTask>
     {
-        IGuardTaskFactory WithEventId(int eventId);
+        IGuardTaskFactory WithEventUniqueId(string eventUniqueId);
         IGuardTaskFactory WithEventDateTime(DateTime eventdatetime);
         IGuardTaskFactory WithAddress(Address address);
         IGuardTaskFactory WithAddress(string city,

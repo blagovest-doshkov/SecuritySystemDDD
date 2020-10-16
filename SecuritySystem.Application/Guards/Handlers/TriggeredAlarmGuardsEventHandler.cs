@@ -9,15 +9,16 @@
     using SecuritySystem.Domain.Guards.Specifications;
     using SecuritySystem.Application.Guards.GuardPatrols.Queries;
     using SecuritySystem.Domain.Guards.Services;
+    using SecuritySystem.Domain.Systems.Events;
 
-    public class NewAlarmEventHandler: IEventHandler<NewAlarmEvent>
+    public class TriggeredAlarmGuardsEventHandler: IEventHandler<TriggeredAlarmSystemEvent>
     {
         private readonly IGuardTaskFactory guardTaskDomainFactory;
         private readonly IGuardTaskDomainRepository guardTaskDomainRepository;
         private readonly IGuardPatrolQueryRepository guardPatrolQueryRepository;
         private readonly ILocationGuardPatrolService locationGuardPatrolService;
 
-        public NewAlarmEventHandler(
+        public TriggeredAlarmGuardsEventHandler(
             IGuardTaskFactory guardTaskDomainFactory,
             IGuardTaskDomainRepository guardTaskDomainRepository,
             IGuardPatrolQueryRepository guardPatrolQueryRepository,
@@ -29,19 +30,17 @@
             this.locationGuardPatrolService = locationGuardPatrolService;
         }
 
-        public async Task Handle(NewAlarmEvent domainEvent)
+        public async Task Handle(TriggeredAlarmSystemEvent domainEvent)
         {
             var guardTask = this.guardTaskDomainFactory
-                .WithEventId(domainEvent.EventId)
+                .WithEventUniqueId(domainEvent.UniqueId)
                 .WithEventDateTime(domainEvent.EventDateTime)
                 .WithAddress(
                     domainEvent.City,
                     domainEvent.Street,
                     domainEvent.Latitude,
-                    domainEvent.longitude)
+                    domainEvent.Longitude)
                 .Build();
-
-            await this.guardTaskDomainRepository.Save(guardTask); //In order ID to be generated in DB should be tested without this line
 
             var availablePatrols = await this.guardPatrolQueryRepository.GetGuardPatrolListings(new GuardPatrolOnlyAvailableSpecification(true));
             var nearestPatrol = await this.locationGuardPatrolService.FindNearestPatrol(guardTask.Address.Coordinates, availablePatrols);

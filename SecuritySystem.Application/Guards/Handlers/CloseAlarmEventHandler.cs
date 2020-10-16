@@ -18,7 +18,7 @@
 
         public async Task Handle(CloseAlarmEvent domainEvent)
         {
-            var guardTask = await this.guardTaskDomainRepository.FindActiveTaskByEventId(domainEvent.EventId);
+            var guardTask = await this.guardTaskDomainRepository.FindActiveTaskByEventUniqueId(domainEvent.EventUniqueId);
 
             guardTask.UpdateState(GuardTaskState.Handled);
 

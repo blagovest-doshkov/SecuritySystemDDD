@@ -18,11 +18,13 @@
 
         public async Task Handle(AssignedPatrolEvent domainEvent)
         {
-            var alarmEvent = await this.alarmEventDomainRepository.Find(domainEvent.EventId);
+            var alarmEvent = await this.alarmEventDomainRepository.FindActiveEventByEventUniqueId(domainEvent.EventUniqueId);
 
-            alarmEvent.UpdateAssignedGuardId(domainEvent.GuardPatrolId);
-
-            await this.alarmEventDomainRepository.Save(alarmEvent);
+            if(alarmEvent != null)
+            { 
+                alarmEvent.UpdateAssignedGuardId(domainEvent.GuardPatrolId);
+                await this.alarmEventDomainRepository.Save(alarmEvent);
+            }
         }
     }
 }

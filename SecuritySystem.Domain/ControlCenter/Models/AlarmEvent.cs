@@ -11,17 +11,20 @@
     {
         internal AlarmEvent(
             int systemId,
+            string eventUniqueId,
+            DateTime eventDateTime,
             string notes,
             Address address,
             Contact contact)
         {
             ValidateNotes(notes);
 
+            this.EventUniqueId = eventUniqueId;
             this.SystemId = systemId;
             this.Notes = notes;
             this.Address = address;
             this.Contact = contact;
-            this.EventDateTime = DateTime.UtcNow;
+            this.EventDateTime = eventDateTime;
             this.AssignedGuardId = default!;
             this.State = AlarmEventState.InProgress;
         }
@@ -29,15 +32,18 @@
         //EF workaround for migrations
         internal AlarmEvent(
             int systemId,
+            string eventUniqueId,
+            DateTime eventDateTime,
             string notes)
         {
             ValidateNotes(notes);
 
+            this.EventUniqueId = eventUniqueId;
             this.SystemId = systemId;
             this.Notes = notes;
             this.Address = default!;
             this.Contact = default!;
-            this.EventDateTime = DateTime.UtcNow;
+            this.EventDateTime = eventDateTime;
             this.AssignedGuardId = default!;
             this.State = AlarmEventState.InProgress;
         }
@@ -49,19 +55,20 @@
         public DateTime EventDateTime { get; private set; }
         public AlarmEventState State { get; private set; }
         public int? AssignedGuardId { get; private set; }
+        public string EventUniqueId { get; private set; }
 
-        public AlarmEvent RequestGuardAssignment()
-        {
-            this.RaiseEvent(new NewAlarmEvent(
-                this.Id, 
-                EventDateTime,
-                Notes,
-                Address.City,
-                Address.StreetInfo,
-                Address.Coordinates.Latitude,
-                Address.Coordinates.Longitude));
-            return this;
-        }
+        //public AlarmEvent RequestGuardAssignment()
+        //{
+        //    this.RaiseEvent(new NewAlarmEvent(
+        //        this.Id, 
+        //        EventDateTime,
+        //        Notes,
+        //        Address.City,
+        //        Address.StreetInfo,
+        //        Address.Coordinates.Latitude,
+        //        Address.Coordinates.Longitude));
+        //    return this;
+        //}
 
         public AlarmEvent UpdateAssignedGuardId(int guardId)
         {
@@ -75,7 +82,7 @@
             this.State = state;
             if (state == AlarmEventState.Handled)
             {
-                this.RaiseEvent(new CloseAlarmEvent(this.Id));
+                this.RaiseEvent(new CloseAlarmEvent(this.EventUniqueId));
             }
             return this;
         }

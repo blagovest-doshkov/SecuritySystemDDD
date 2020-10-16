@@ -13,11 +13,18 @@
     {
         public void Configure(EntityTypeBuilder<AlarmEvent> builder)
         {
+
             builder
                 .HasKey(e => e.Id);
 
             builder
                 .Property(e => e.SystemId);
+
+            builder
+                .Property(e => e.EventUniqueId);
+
+            builder
+                .Property(e => e.EventDateTime);
 
             builder
                 .Property(e => e.Notes)
@@ -26,9 +33,8 @@
             builder
                 .OwnsOne(e => e.State, state => 
                 {
-                    state.WithOwner();
-
                     state.Property(s => s.Value);
+                    state.Property(s => s.Name);
                 });
 
             builder

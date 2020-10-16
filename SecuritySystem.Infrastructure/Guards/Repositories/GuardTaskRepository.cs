@@ -40,14 +40,15 @@
         {
             return await this
                 .All()
+                .Include(t => t.AssignedPatrol)
                 .FirstOrDefaultAsync(g => g.Id == id, cancellationToken);
         }
 
-        public async Task<GuardTask> FindActiveTaskByEventId(int eventId, CancellationToken cancellationToken = default)
+        public async Task<GuardTask> FindActiveTaskByEventUniqueId(string eventId, CancellationToken cancellationToken = default)
         {
                 return await this
                     .AllActive()
-                    .SingleOrDefaultAsync(t => t.EventId == eventId);
+                    .SingleOrDefaultAsync(t => t.EventUniqueId == eventId);
         }
 
         public async Task<IEnumerable<GuardTask>> GetGuardTaskListings(
@@ -56,7 +57,7 @@
             int take = int.MaxValue, 
             CancellationToken cancellationToken = default)
         {
-            return (await (this.All().Where(guardTaskSpecification))
+            return (await (this.All().Include(t => t.AssignedPatrol).Where(guardTaskSpecification))
                 .ToListAsync(cancellationToken))
                     .Skip(skip)
                     .Take(take);
@@ -64,7 +65,7 @@
 
         public async Task<int> Total(Specification<GuardTask> guardTaskSpecification, CancellationToken cancellationToken = default)
         {
-            return await (this.All().Where(guardTaskSpecification))
+            return await (this.All().Include(t => t.AssignedPatrol).Where(guardTaskSpecification))
                 .CountAsync(cancellationToken);
         }
 
@@ -72,7 +73,8 @@
         {
             return this
                 .All()
-                .Where(task => task.State != GuardTaskState.Handled);
+                .Include(t => t.AssignedPatrol)
+                .Where(task => task.State.Value != GuardTaskState.Handled.Value);
         }
     }
 }

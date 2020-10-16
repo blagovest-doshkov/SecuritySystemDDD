@@ -7,15 +7,17 @@
 
     public class GuardTaskFactory : IGuardTaskFactory
     {
-        private int EventId;
+        private string EventUniqueId = default!;
         private Address Address = default!;
         private DateTime EventDateTime;
 
+        private bool EventUniqueIdSet = false;
         private bool AddressSet = false;
 
-        public IGuardTaskFactory WithEventId(int eventId)
+        public IGuardTaskFactory WithEventUniqueId(string eventId)
         {
-            this.EventId = eventId;
+            this.EventUniqueIdSet = true;
+            this.EventUniqueId = eventId;
             return this;
         }
 
@@ -35,24 +37,22 @@
 
         public IGuardTaskFactory WithAddress(string city, string streetInfo, GeoCoordinates coordinates)
         {
-            this.Address = new Address(city, streetInfo, coordinates);
-            return this;
+            return WithAddress(new Address(city, streetInfo, coordinates));
         }
 
         public IGuardTaskFactory WithAddress(string city, string streetInfo, double latitude, double longitude)
         {
-            this.Address = new Address(city, streetInfo, new GeoCoordinates(latitude, longitude));
-            return this;
+            return WithAddress(new Address(city, streetInfo, new GeoCoordinates(latitude, longitude)));
         }
 
         public GuardTask Build()
         {
-            if (!AddressSet)
+            if (!AddressSet || !EventUniqueIdSet)
             {
                 throw new InvalidGuardTaskException("Address must have a value.");
             }
 
-            return new GuardTask(EventId, Address, EventDateTime);
+            return new GuardTask(EventUniqueId, Address, EventDateTime);
         }
 
     }

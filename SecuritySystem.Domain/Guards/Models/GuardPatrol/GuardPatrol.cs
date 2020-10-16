@@ -6,7 +6,6 @@
     using static ModelConstants.GuardPatrol;
     using System.Collections.Generic;
     using System.Linq;
-    using System;
 
     public class GuardPatrol: Entity<int>, IAggregateRoot
     {
@@ -23,6 +22,8 @@
 
         public GeoCoordinates GeoLocation { get; private set; }
         public bool IsAvailable { get; private set; }
+
+        public bool TaskAccepted { get; private set; }
 
         public IReadOnlyCollection<GuardUnit> GuardUnits => this.guardUnits.ToList().AsReadOnly();
 

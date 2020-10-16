@@ -3,10 +3,15 @@
     using Common;
     using Common.Models;
     using Models;
+    using System;
 
     public interface IAlarmEventFactory : IFactory<AlarmEvent>
     {
         IAlarmEventFactory WithSystemId(int systemId);
+
+        IAlarmEventFactory WithEventUniqueId(string eventUniqueId);
+
+        IAlarmEventFactory WithEventDateTime(DateTime eventDateTime);
 
         IAlarmEventFactory WithNotes(string notes);
 

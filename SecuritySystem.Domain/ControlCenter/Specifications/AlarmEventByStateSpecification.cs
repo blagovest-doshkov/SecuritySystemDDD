@@ -26,7 +26,7 @@
         
         public override Expression<Func<AlarmEvent, bool>> ToExpression()
         {
-            return alarmEvent => alarmEvent.State == this.State;
+            return alarmEvent => alarmEvent.State.Value == this.State.Value;
         }
     }
 }

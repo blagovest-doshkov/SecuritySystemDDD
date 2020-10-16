@@ -4,14 +4,14 @@
     public class AssignedPatrolEvent : IDomainEvent
     {
         internal AssignedPatrolEvent(
-            int eventId,
+            string eventUniqueId,
             int guardPatrolId)
         {
-            this.EventId = eventId;
+            this.EventUniqueId = eventUniqueId;
             this.GuardPatrolId = guardPatrolId;
         }
 
-        public int EventId { get; private set; }
+        public string EventUniqueId { get; private set; }
         public int GuardPatrolId { get; private set; }
     }
 }

@@ -13,7 +13,7 @@
                 .HasKey(t => t.Id);
 
             builder
-                .Property(t => t.EventId);
+                .Property(t => t.EventUniqueId);
 
             builder
                 .Property(t => t.EventDateTime);
@@ -29,8 +29,9 @@
             builder
                 .OwnsOne(t => t.State, s => 
                 {
-                    s.WithOwner();
+                    //s.WithOwner();
                     s.Property(st => st.Value);
+                    s.Property(st => st.Name);
                 });
 
             builder

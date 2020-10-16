@@ -26,7 +26,7 @@
         
         public override Expression<Func<GuardTask, bool>> ToExpression()
         {
-            return guardTask => guardTask.State == this.State;
+            return guardTask => guardTask.State.Value == this.State.Value;
         }
     }
 }

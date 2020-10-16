@@ -4,11 +4,11 @@
     public class CloseAlarmEvent : IDomainEvent
     {
         internal CloseAlarmEvent(
-            int eventId)
+            string eventUniqueId)
         {
-            this.EventId = eventId;
+            this.EventUniqueId = eventUniqueId;
         }
 
-        public int EventId { get; private set; }
+        public string EventUniqueId { get; private set; }
     }
 }

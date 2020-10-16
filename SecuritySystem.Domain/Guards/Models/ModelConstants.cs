@@ -2,6 +2,12 @@
 {
     public class ModelConstants
     {
+        public class TaskAssignmentRequest
+        {
+            public const int MinNotesLength = 2;
+            public const int MaxNotesLength = 80;
+        }
+
         public class GuardPatrol
         {
             public const double DefaultOfficeLatitude = 42.696189;

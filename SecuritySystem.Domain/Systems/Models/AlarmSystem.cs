@@ -5,6 +5,7 @@
     using Exceptions;
     using Microsoft.VisualBasic.CompilerServices;
     using SecuritySystem.Domain.Systems.Events;
+    using System;
     using static ModelConstants.AlarmSystem;
 
     public class AlarmSystem : Entity<int>, IAggregateRoot
@@ -173,6 +174,7 @@
                 this.AlarmTriggered = true;
                 this.RaiseEvent(new TriggeredAlarmSystemEvent(
                     this.Id, 
+                    DateTime.UtcNow,
                     this.Notes,
                     this.ContactsInfo.Name,
                     this.ContactsInfo.PhoneNumber,

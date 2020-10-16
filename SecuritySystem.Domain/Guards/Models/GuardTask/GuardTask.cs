@@ -9,16 +9,16 @@
     public class GuardTask:Entity<int>, IAggregateRoot
     {
         internal GuardTask(
-            int eventId,
+            string eventUniqueId,
             Address address,
             DateTime eventDateTime
             )
         {
-            ValidateEventId(eventId);
+            ValidateEventId(eventUniqueId);
 
             this.GuardTaskDateTime = DateTime.UtcNow;
             this.State = GuardTaskState.InProgress;
-            this.EventId = eventId;
+            this.EventUniqueId = eventUniqueId;
             this.EventDateTime = eventDateTime;
             this.Address = address;
             this.AssignedPatrol = default!;            
@@ -26,19 +26,19 @@
 
         //EF workaround for migrations
         internal GuardTask(
-            int eventId,
+            string eventUniqueId,
             DateTime eventDateTime
             )
         {
             this.GuardTaskDateTime = DateTime.UtcNow;
             this.State = GuardTaskState.InProgress;
-            this.EventId = eventId;
+            this.EventUniqueId = eventUniqueId;
             this.EventDateTime = eventDateTime;
             this.Address = default!;
             this.AssignedPatrol = default!;
         }
 
-        public int EventId { get; private set; }
+        public string EventUniqueId { get; private set; }
         public GuardTaskState State { get; private set; }
         public GuardPatrol AssignedPatrol { get; private set; }
         public Address Address { get; private set; }
@@ -54,7 +54,7 @@
             this.AssignedPatrol = guard;
             this.AssignedPatrol.SetAvailabilityTo(false);
             //Trigger Event
-            this.RaiseEvent(new AssignedPatrolEvent(this.EventId, guard.Id));
+            this.RaiseEvent(new AssignedPatrolEvent(this.EventUniqueId, guard.Id));
             return this;
         }
 
@@ -69,9 +69,9 @@
         }
 
         //Validations
-        private void ValidateEventId(int eventId)
+        private void ValidateEventId(string eventId)
         {
-            Validator.NonNegative<InvalidGuardTaskException>(eventId, nameof(this.EventId));
+            Validator.StringNotEmpty<InvalidGuardTaskException>(eventId, nameof(this.EventUniqueId));
         }
 
         private void ValidateGuardPatrol(GuardPatrol guard)

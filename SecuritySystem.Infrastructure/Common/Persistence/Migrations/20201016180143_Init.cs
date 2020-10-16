@@ -41,7 +41,9 @@ namespace SecuritySystem.Infrastructure.Common.Persistence.Migrations
                     Contact_PhoneNumber_Number = table.Column<string>(maxLength: 20, nullable: true),
                     EventDateTime = table.Column<DateTime>(nullable: false),
                     State_Value = table.Column<int>(nullable: true),
-                    AssignedGuardId = table.Column<int>(nullable: true)
+                    State_Name = table.Column<string>(nullable: true),
+                    AssignedGuardId = table.Column<int>(nullable: true),
+                    EventUniqueId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -95,7 +97,8 @@ namespace SecuritySystem.Infrastructure.Common.Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     GeoLocation_Latitude = table.Column<decimal>(type: "decimal(12,9)", nullable: true),
                     GeoLocation_Longitude = table.Column<decimal>(type: "decimal(12,9)", nullable: true),
-                    IsAvailable = table.Column<bool>(nullable: false)
+                    IsAvailable = table.Column<bool>(nullable: false),
+                    TaskAccepted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -112,11 +115,11 @@ namespace SecuritySystem.Infrastructure.Common.Persistence.Migrations
                     AlarmTriggered = table.Column<bool>(nullable: false),
                     IsInConfiguration = table.Column<bool>(nullable: false),
                     IsInstalled = table.Column<bool>(nullable: false),
-                    ControlUnitSerialNumber = table.Column<string>(nullable: false),
+                    ControlUnitSerialNumber = table.Column<string>(nullable: true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Notes = table.Column<string>(maxLength: 150, nullable: false),
                     AddressId = table.Column<int>(nullable: false),
-                    OwnerId = table.Column<int>(nullable: false),
+                    OwnerId = table.Column<string>(nullable: false),
                     ContactsInfo_Name = table.Column<string>(maxLength: 100, nullable: true),
                     ContactsInfo_PhoneNumber_Number = table.Column<string>(maxLength: 20, nullable: true)
                 },
@@ -243,8 +246,9 @@ namespace SecuritySystem.Infrastructure.Common.Persistence.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EventId = table.Column<int>(nullable: false),
+                    EventUniqueId = table.Column<string>(nullable: false),
                     State_Value = table.Column<int>(nullable: true),
+                    State_Name = table.Column<string>(nullable: true),
                     GuardPatrolId = table.Column<int>(nullable: false),
                     Address_City = table.Column<string>(maxLength: 200, nullable: true),
                     Address_StreetInfo = table.Column<string>(maxLength: 200, nullable: true),
